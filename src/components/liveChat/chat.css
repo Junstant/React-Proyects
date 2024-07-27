@@ -1,0 +1,43 @@
+@keyframes buttonSpark {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    border: 1px solid #ff5959;
+    color: #ff5959;
+    box-shadow: 0 0 10px rgba(255, 89, 89, 0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.bubble {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 200ms ease-in;
+  color: var(--primary);
+  background: white;
+  animation: buttonSpark 4s;
+  animation-delay: 2s;
+  border: 1px solid transparent;
+}
+/* cool hover effect on bubble hover */
+.bubble:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  border: 1px solid #ff5959;
+  color: #ff5959;
+}
+
+.icon {
+  font-size: 30px;
+}

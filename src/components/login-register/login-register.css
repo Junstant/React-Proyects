@@ -1,0 +1,42 @@
+.fatherLR input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+}
+.fatherLR{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.formLoginRegisterLR{
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    flex-direction: column;
+    width: 75%;
+}
+.childLR{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: clamp(300px, 70%, 500px);
+}
+
+.checkConLR input{
+    display: inline;
+    width: fit-content;
+    padding: 0;
+    margin: 0;
+}
+
+.checkConLR{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
