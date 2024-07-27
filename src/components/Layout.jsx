@@ -15,7 +15,7 @@ const Layout = (pepito) => {
           <Header />
           <Routes>
             <Route path="/login-register" element={<LoginRegister />} />
-            <Route path="/" element={<main className="main">{pepito.children}</main>}/>
+            <Route path="/" element={<main className="main"><div className="mainFather">{pepito.children}</div></main>}/>
             <Route path="/admin" element={<AdminPanel />} />
           </Routes>
         </div>

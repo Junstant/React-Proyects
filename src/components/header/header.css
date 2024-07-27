@@ -11,12 +11,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 .menu li {
   list-style: none;
-  margin-right: 20px;
+}
+.header h1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  line-height: 0px;
+  margin: 0px;
+}
+.header h1 .icon{
+  font-size: 3rem;
+  fill:var(--secondary);
 }
 
-h1 {
-  line-height: 0px;
+/* media queries */
+@media screen and (max-width: 700px) {
+  .header {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .menu{
+    margin: 0px;
+    padding: 0px;
+  }
 }

@@ -1,14 +1,26 @@
 /* Nunito rounded */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
-body{
-    background-color: #f4f4f4;
-    font-family: 'Nunito', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+  background-color: #f4f4f4;
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* {
+  font-family: "Nunito", sans-serif;
+}
+a {
+  color: var(--primary);
+  transition: all 200ms ease-in-out;
+}
+a:hover {
+  color: var(--secondary);
+  text-shadow: 0px 5px 30px var(--secondary);
 }
 
-:root{
-    --primary: #727C8F;
+:root {
+  --primary: #727c8f;
+  --secondary: #c155ff;
 }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import "./AdminPanel.css";
 import { useGlobalContext } from "../../Context";
 
@@ -27,24 +26,23 @@ const AdminPanel = () => {
     <section className="fatherAP">
       <div className="childAP">
         <h1>Create new palette</h1>
+        <p>Create a new palette and contribute to Color Palletio collection</p>
         <form className="formColorsAP">
-          <div className="inputFatherAP">
             {formValues.map((color, index) => {
               return (
                 <div key={index} className="inputChildAP">
-                  <label htmlFor={`color${index}`}>Color {index + 1}</label>
                   <input 
                     type="color"
                     id={`color${index}`}
                     name={`color${index}`}
                     value={color}
                     onChange={(e) => handleChangeFormValue(e,index)}
+                    className={`colorInputAP${index}`}
                   />
                   <input type="text" value={color} className="hexInputAP" onChange={(e) => handleChangeFormValue(e,index)}/>
                 </div>
               );
             })}
-          </div>
           <button type="submit">Submit</button>
         </form>
       </div>

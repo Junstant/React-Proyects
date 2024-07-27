@@ -34,8 +34,8 @@
 .bubble:hover {
   transform: scale(1.1);
   cursor: pointer;
-  border: 1px solid #ff5959;
-  color: #ff5959;
+  border: 1px solid var(--primary);
+  color: var(--primary);
 }
 
 .icon {

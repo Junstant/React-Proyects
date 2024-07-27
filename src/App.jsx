@@ -3,13 +3,14 @@ import Layout from './components/Layout.jsx';
 import ColorsPalette from './components/colorPalette/ColorsPalette.jsx';
 import './global.css'
 import { useGlobalContext } from "./Context";
+import {Sparkle} from '@phosphor-icons/react';
 
 function App() {
   const {colorDataBase} = useGlobalContext();
   return (
       <div>
           <Layout>
-            <h1 style={{color:'#727C8F'}}>Latest!</h1>
+            <h1 style={{color:'#727C8F'}}><Sparkle/> Latest!</h1>
             <ColorsPalette colors={colorDataBase}/>
           </Layout>
       </div> 
