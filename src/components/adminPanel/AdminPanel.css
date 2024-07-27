@@ -59,6 +59,11 @@
   font-size: 1rem;
   width: 70px;
 }
+.submitAP {
+  padding: 20px 40px;
+  border-radius: 20px;
+}
+
 .inputChildAP .colorInputAP0::-webkit-color-swatch {
   border-radius: 15px 15px 0px 0px;
 }

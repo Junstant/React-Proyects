@@ -43,7 +43,7 @@ const AdminPanel = () => {
                 </div>
               );
             })}
-          <button type="submit">Submit</button>
+          <button type="submit" className="submitAP">Submit</button>
         </form>
       </div>
     </section>
