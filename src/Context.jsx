@@ -23,38 +23,38 @@ export const GlobalContextProvider = ({ children }) => {
     },
   ]);
   // database of colors
-  const colorDataBase = [
+  const [colorDataBase, setColorDataBase] = useState([
     {
-      color: ['#17153B', '#2E236C', '#433D8B', '#C8ACD6', ],
-      likes: '594',
-      time: '4 days',
+      color: ["#17153B", "#2E236C", "#433D8B", "#C8ACD6"],
+      likes: "594",
+      time: "2024-03-05T02:39:56.410Z",
     },
     {
-      color: ['#96B6C5', '#ADC4CE', '#EEE0C9', '#F1F0E8'],
-      likes: '20,252',
-      time: '11 months',
+      color: ["#96B6C5", "#ADC4CE", "#EEE0C9", "#F1F0E8"],
+      likes: "20252",
+      time: "2024-01-02T02:39:56.410Z",
     },
     {
-      color: ['#FFEECC', '#FFDDCC', '#FFCCCC', '#FEBBCC'],
-      likes: '16,250',
-      time: '1 year',
+      color: ["#FFEECC", "#FFDDCC", "#FFCCCC", "#FEBBCC"],
+      likes: "16250",
+      time: "2022-07-23T02:39:56.410Z",
     },
     {
-      color: ['#B5C0D0', '#CCD3CA', '#F5E8DD', '#EED3D9'],
-      likes: '11,302',
-      time: '4 months',
+      color: ["#B5C0D0", "#CCD3CA", "#F5E8DD", "#EED3D9"],
+      likes: "11302",
+      time: "2019-04-29T02:39:56.410Z",
     },
     {
-      color: ['#F1EAFF', '#E5D4FF', '#DCBFFF', '#D0A2F7'],
-      likes: '9,080',
-      time: '3 years',
+      color: ["#F1EAFF", "#E5D4FF", "#DCBFFF", "#D0A2F7"],
+      likes: "9080",
+      time: "2012-10-29T02:39:56.410Z",
     },
     {
-      color: ['#FFD6BA', '#FFAAA6', '#FF8C94', '#FF6A8A'],
-      likes: '6,250',
-      time: '1',
+      color: ["#FFD6BA", "#FFAAA6", "#FF8C94", "#FF6A8A"],
+      likes: "6250",
+      time: "2011-08-22T02:39:56.410Z",
     },
-  ]
+  ]);
 
   //! -----------------  FUNCTIONS -----------------------------------------
 
@@ -80,7 +80,47 @@ export const GlobalContextProvider = ({ children }) => {
     setActualUser({ ...actualUser, email: "", password: "", isLogged: false, isAdmin: false });
     localStorage.removeItem("user");
   };
- 
+
+  //trasnform time to hours, days, months, years
+  const timeTransform = (time) => {
+    const timeNow = new Date();
+    const timePost = new Date(time);
+    const timeDifference = timeNow - timePost;
+
+    const units = [
+      { label: "year", milliseconds: 31536000000 },
+      { label: "month", milliseconds: 2592000000 },
+      { label: "day", milliseconds: 86400000 },
+      { label: "hour", milliseconds: 3600000 },
+      { label: "minute", milliseconds: 60000 },
+      { label: "second", milliseconds: 1000 },
+    ];
+    for (const unit of units) {
+      const elapsed = Math.floor(timeDifference / unit.milliseconds);
+      if (elapsed > 0) {
+        return `${elapsed} ${unit.label}${elapsed > 1 ? "s" : ""}`;
+      }
+    }
+    return "1 minute";
+  };
+
+  //update the color database and save it in the local storage
+  const handleColorDataBase = (color) => {
+    const time = new Date();
+    const timeString = time.toISOString();
+    console.log(time);
+    const newColor = { color: color, likes: "0", time: timeString };
+    setColorDataBase([...colorDataBase, newColor]);
+    localStorage.setItem("colors", JSON.stringify([...colorDataBase, newColor]));
+  };
+
+  //update the likes of the color and save it in the local storage
+  const handleLike = (i) => {
+    const newColorDataBase = [...colorDataBase];
+    newColorDataBase[i].likes = (parseInt(newColorDataBase[i].likes) + 1).toString();
+    setColorDataBase(newColorDataBase);
+    localStorage.setItem("colors", JSON.stringify(newColorDataBase));
+  }
 
   //! -----------------  USE EFFECT -----------------------------------------
   //search for user in the localStrorage when the page is loaded and send it to the actual user and the database
@@ -95,9 +135,9 @@ export const GlobalContextProvider = ({ children }) => {
     }
     //saves the local storage colors in the database
     if (localStorage.getItem("colors")) {
-      setUserDatabase(JSON.parse(localStorage.getItem("colors")));
+      setColorDataBase(JSON.parse(localStorage.getItem("colors")));
     }
-  }, []);	
+  }, []);
 
   return (
     <GlobalContext.Provider
@@ -108,6 +148,9 @@ export const GlobalContextProvider = ({ children }) => {
         handleUserDatabase: handleUserDatabase,
         logOut: logOut,
         colorDataBase: colorDataBase,
+        handleColorDataBase: handleColorDataBase,
+        handleLike: handleLike,
+        timeTransform: timeTransform,
       }}
     >
       {children}

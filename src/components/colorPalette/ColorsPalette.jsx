@@ -1,14 +1,21 @@
 import React from "react";
 import "./colorsPalette.css";
 import { Heart } from "@phosphor-icons/react";
+import { useGlobalContext } from "../../Context";
 
 const ColorsPalette = (props) => {
   const array = props.colors;
 
+  //function to copy the hex to the clipboard
   function copyToClipboard(hex) {
     console.log(hex); 
     navigator.clipboard.writeText(hex);
   } 
+
+  //function to handle the like of the color
+  const { handleLike, timeTransform } = useGlobalContext();
+
+  //
 
   return (
     <section className="palette">
@@ -24,10 +31,10 @@ const ColorsPalette = (props) => {
           ))}
           </div>
           <div className="info">
-            <span className="likes">
+            <span className="likes" onClick={() => handleLike(i)} >
               <Heart/> {actualColor.likes} likes
             </span>
-            <span className="time">{actualColor.time} ago</span>
+            <span className="time">{timeTransform(actualColor.time)} ago</span>
           </div>
         </div>
       ))}

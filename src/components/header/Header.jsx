@@ -13,7 +13,7 @@ const Header = () => {
         <menu className="menu">
             <li><Link to={"/"}>Palettes</Link></li>
             {actualUser.isAdmin ? <li><Link to="/admin">Create</Link></li> : null}
-            {actualUser.isLogged ? <li><span onClick={() => logOut()}>Log out</span></li> : <li><Link to="/login-register">Login</Link></li>}
+            {actualUser.isLogged ? <li onClick={() => logOut()}><a>Log out</a></li> : <li><Link to="/login-register">Login</Link></li>}
         
         </menu>
         </header>
