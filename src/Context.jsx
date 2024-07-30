@@ -1,4 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { Check, Checks } from "@phosphor-icons/react";
+
 //create the context
 const GlobalContext = createContext();
 
@@ -53,6 +55,91 @@ export const GlobalContextProvider = ({ children }) => {
       color: ["#FFD6BA", "#FFAAA6", "#FF8C94", "#FF6A8A"],
       likes: "6250",
       time: "2011-08-22T02:39:56.410Z",
+    },
+  ]);
+
+  //chat database
+  const [chatDataBase, setChatDataBase] = useState([
+    {
+      name: "Messi",
+      thumbnail: "https://fcb-abj-pre.s3.amazonaws.com/img/jugadors/MESSI.jpg",
+      lastConnection: "2024-03-01T02:39:56.410Z",
+      id: 1,
+      messages: [
+        {
+          author: "Messi",
+          text: "Can you return to me the facha maestro?",
+          time: "2024-03-05T02:39:56.410Z",
+          id: 1,
+          state: "read",
+        },
+        {
+          author: "Me",
+          text: "I will return it to you if you return to Barcelona",
+          time: "2024-03-05T02:39:56.410Z",
+          id: 2,
+          state: "read",
+        },
+      ],
+    },
+    {
+      name: "Granny",
+      thumbnail: "../public/abuelita.jpg",
+      lastConnection: "2024-07-29T02:39:56.410Z",
+      id: 2,
+      messages: [
+        {
+          author: "Granny",
+          text: 'Do not open the door to the "ven a mi abuelita" guyssssssssssss',
+          time: "2024-07-29T02:39:56.410Z",
+          id: 1,
+          state: "unread",
+        },
+      ],
+    },
+    {
+      name: "Ven a mi abuelita guy",
+      thumbnail: "../public/venami.jpg",
+      lastConnection: "2024-07-29T02:39:56.410Z",
+      id: 3,
+      messages: [
+        {
+          author: "Me | Ven a mi abuelita guy",
+          text: "Open the door granny, I have a surprise for you 🥵🍆",
+          time: "2024-07-29T02:39:56.410Z",
+          id: 1,
+          state: "read",
+        },
+        {
+          author: "Me",
+          text: "Wrong chat, im the grandson",
+          time: "2024-07-29T02:39:56.410Z",
+          id: 2,
+          state: "sent",
+        },
+      ],
+    },
+    {
+      name: "Moto moto",
+      thumbnail: "https://i1.sndcdn.com/artworks-rhpmUzVPgtR2OHPS-0NncKA-t500x500.jpg",
+      lastConnection: "2024-07-29T02:39:56.410Z",
+      id: 4,
+      messages: [
+        {
+          author: "Moto moto",
+          text: "I like them big, I like them chunky - Palabras de GitHub Copilot",
+          time: "2024-07-29T02:39:56.410Z",
+          id: 1,
+          state: "read",
+        },
+        {
+          author: "Me",
+          text: "I like them round, I like them plumpy",
+          time: "2024-07-29T02:39:56.410Z",
+          id: 2,
+          state: "delivered",
+        },
+      ],
     },
   ]);
 
@@ -120,7 +207,26 @@ export const GlobalContextProvider = ({ children }) => {
     newColorDataBase[i].likes = (parseInt(newColorDataBase[i].likes) + 1).toString();
     setColorDataBase(newColorDataBase);
     localStorage.setItem("colors", JSON.stringify(newColorDataBase));
-  }
+  };
+
+  //Handle search contact by id
+  const handleSearchContact = (id) => {
+    const contact = chatDataBase.find((contact) => contact.id === id);
+    return contact;
+  };
+
+  //return the chat component
+  const stateOfMessage = (message) => {
+    if (message.state === "read") {
+      return <Checks style={{ color: "var(--secondary)" }}></Checks>;
+    } else if (message.state === "unread") {
+      return <Checks style={{ color: "var(--primary)" }}></Checks>;
+    } else if (message.state === "sending") {
+      return <Check style={{ color: "var(--primary)" }}></Check>;
+    } else {
+      return <Check style={{ color: "var(--secondary)" }}></Check>;
+    }
+  };
 
   //! -----------------  USE EFFECT -----------------------------------------
   //search for user in the localStrorage when the page is loaded and send it to the actual user and the database
@@ -151,6 +257,9 @@ export const GlobalContextProvider = ({ children }) => {
         handleColorDataBase: handleColorDataBase,
         handleLike: handleLike,
         timeTransform: timeTransform,
+        chatDataBase: chatDataBase,
+        handleSearchContact: handleSearchContact,
+        stateOfMessage: stateOfMessage,
       }}
     >
       {children}

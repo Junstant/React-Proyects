@@ -1,0 +1,93 @@
+.fatherSP {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background-color: #f5f5f5;
+  width: 100%;
+}
+.childSP {
+  width: clamp(600px, 30%, 100%);
+  height: 70vh;
+  border-radius: 40px;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+}
+.headerSP {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0px 45px;
+  align-items: center;
+  border-bottom: 1px solid #f5f5f5;
+  height: 100px;
+  color: var(--primary);
+  gap: 20px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #e2e2e2;
+}
+.iconSP{
+    background-color: var(--secondary);
+    color: white;
+    padding: 10px;
+    border-radius: 100px;
+    box-shadow: 0px 5px 30px #c155ffaf;
+}
+.chatBoxSP{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    height: 90px;
+    border-bottom: 1px solid #e7e7e7;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 100ms ease-in-out;
+    padding: 0px 40px;
+}
+.chatBoxSP:hover{
+    background-color: #e9e9e9;
+    cursor: pointer;
+}
+.thumbnailSP{
+    width: 60px;
+    height: 50px;
+    background-attachment: cover;
+    background-size: cover;
+    border-radius: 100px;
+}
+.titleMessagesSP{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.chatNameSP{
+    color: var(--primary);
+    font-weight: 700;
+}
+.chatMessageSP{
+    color: #727272;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    align-items: center;
+    width : 100%;
+}
+.lastMessageSP{
+    width : 400px;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.titleAndDateSP{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+.chatDateSP{
+    color: #727272;
+    font-size: 0.8rem;
+}

@@ -16,9 +16,11 @@
 }
 .childAP h1 {
   line-height: 1px;
+  color: var(--primary);
 }
 .childAP p {
   margin-bottom: 4rem;
+  color: var(--primary);
 }
 .formColorsAP {
   display: flex;
@@ -62,8 +64,9 @@
 .submitAP {
   padding: 20px 40px;
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid var(--primary);
   transition: all 100ms ease-in-out;
+  color: var(--primary);
 }
 .submitAP:hover{
   background-color: var(--secondary);

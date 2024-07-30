@@ -1,11 +1,12 @@
 import React from 'react'
 import {ChatsCircle} from "@phosphor-icons/react"
 import './chat.css'
+import { Link } from 'react-router-dom'
 
 
 const Chat = () => {
   return (
-    <div className='bubble'><ChatsCircle className='icon'></ChatsCircle> </div>
+    <Link to="/Support" className='bubble'><ChatsCircle className='icon'></ChatsCircle> </Link>
   )
 }
 
