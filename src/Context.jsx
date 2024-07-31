@@ -64,7 +64,7 @@ export const GlobalContextProvider = ({ children }) => {
       name: "Messi",
       thumbnail: "https://fcb-abj-pre.s3.amazonaws.com/img/jugadors/MESSI.jpg",
       lastConnection: "2024-03-01T02:39:56.410Z",
-      id: 1,
+      id: 0,
       messages: [
         {
           author: "Messi",
@@ -86,7 +86,7 @@ export const GlobalContextProvider = ({ children }) => {
       name: "Granny",
       thumbnail: "../public/abuelita.jpg",
       lastConnection: "2024-07-29T02:39:56.410Z",
-      id: 2,
+      id: 1,
       messages: [
         {
           author: "Granny",
@@ -101,10 +101,10 @@ export const GlobalContextProvider = ({ children }) => {
       name: "Ven a mi abuelita guy",
       thumbnail: "../public/venami.jpg",
       lastConnection: "2024-07-29T02:39:56.410Z",
-      id: 3,
+      id: 2,
       messages: [
         {
-          author: "Me | Ven a mi abuelita guy",
+          author: "Ven a mi abuelita guy",
           text: "Open the door granny, I have a surprise for you 🥵🍆",
           time: "2024-07-29T02:39:56.410Z",
           id: 1,
@@ -123,7 +123,7 @@ export const GlobalContextProvider = ({ children }) => {
       name: "Moto moto",
       thumbnail: "https://i1.sndcdn.com/artworks-rhpmUzVPgtR2OHPS-0NncKA-t500x500.jpg",
       lastConnection: "2024-07-29T02:39:56.410Z",
-      id: 4,
+      id: 3,
       messages: [
         {
           author: "Moto moto",
@@ -228,6 +228,16 @@ export const GlobalContextProvider = ({ children }) => {
     }
   };
 
+  //handle chat database
+  const handleChatDataBase = (chat) => {
+    const chatIndex = chatDataBase.findIndex((item) => chat.id === item.id);
+    console.log(chatIndex); 
+    const newChatDataBase = [...chatDataBase];
+    newChatDataBase[chatIndex] = chat;
+    setChatDataBase([...newChatDataBase]);
+    localStorage.setItem("chat", JSON.stringify(newChatDataBase));
+  };
+
   //! -----------------  USE EFFECT -----------------------------------------
   //search for user in the localStrorage when the page is loaded and send it to the actual user and the database
   useEffect(() => {
@@ -242,6 +252,10 @@ export const GlobalContextProvider = ({ children }) => {
     //saves the local storage colors in the database
     if (localStorage.getItem("colors")) {
       setColorDataBase(JSON.parse(localStorage.getItem("colors")));
+    }
+    //saves the local storage chat in the database
+    if (localStorage.getItem("chat")) {
+      setChatDataBase(JSON.parse(localStorage.getItem("chat")));
     }
   }, []);
 
@@ -260,6 +274,7 @@ export const GlobalContextProvider = ({ children }) => {
         chatDataBase: chatDataBase,
         handleSearchContact: handleSearchContact,
         stateOfMessage: stateOfMessage,
+        handleChatDataBase: handleChatDataBase,
       }}
     >
       {children}

@@ -1,59 +1,253 @@
-.fatherCC{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    font-family: 'Nunito', sans-serif;
+.fatherCC {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
 }
-.childCC{
-    width: clamp(600px, 30%, 100%);
-    height: 70vh;
-    border-radius: 40px;
-    border-radius: 50px;
-    background: #ffffff;
-    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
-    overflow: hidden;
+.childCC {
+  width: clamp(600px, 30%, 80%);
+  height: 70vh;
+  border-radius: 40px;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  overflow: hidden;
+  position: relative;
 }
-.headerCC{
+.headerCC {
   display: flex;
   justify-content: flex-start;
-  padding: 0px 45px;
   align-items: center;
   height: 100px;
   color: white;
-  gap: 20px;
   font-size: 1.2rem;
   background-color: var(--secondary);
   box-shadow: 0px 5px 30px #c155ff8f;
+  padding: 0px 35px;
+  gap: 15px;
 }
-.thumbnailCC{
-    width: 65px;
-    height: 50px;
-    background-attachment: cover;
-    background-size: cover;
-    border-radius: 100px;
+.thumbnailCC {
+  width: 50px;
+  height: 50px;
+  background-attachment: cover;
+  background-size: cover;
+  border-radius: 100px;
 }
-.textCC{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    line-height: 0px;
-    justify-content: center;
-    gap: 25px;
+.secondRowCC {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  line-height: 0px;
+  justify-content: flex-start;
+  gap: 25px;
 }
-.textCC p{
-    font-size: 15px;
+.secondRowCC h5 {
+  line-height: 0px;
+  margin: 0px;
+  font-size: 20px;
 }
-.backCC a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    color: var(--secondary);
-    padding: 10px;
-    border-radius: 100px;
-    box-shadow: 0px 5px 30px #ffffffaf;
+.secondRowCC p {
+  font-size: 15px;
+}
+.firstRowCC {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: fit-content;
+  gap: 10px;
+}
+.firstRowCC a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: var(--secondary);
+  padding: 10px;
+  border-radius: 100px;
+  box-shadow: 0px 5px 30px #ffffff00;
+  height: 20px;
+  width: 20px;
+  transition: all 200ms ease-in-out;
+}
+.firstRowCC a:hover {
+  box-shadow: 0px 10px 30px #ffffffaf;
+  transform: scale(1.1);
+}
+.thirdRowCC {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  color: white;
+  width: 25%;
+  font-size: 30px;
+}
+.thirdRowCC svg:nth-child(2) {
+  margin-right: -8px;
+}
+
+.chatCC {
+  display: flex;
+  padding: 30px 30px;
+  gap: 20px;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.recievedMSG {
+  border: 1px solid #e7e7e7;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 20px 20px 20px 0px;
+  box-shadow: 10px 20px 40px #d9d9d9;
+  color: white;
+  position: relative;
+  margin-left: 30px;
+  background: #c155ffc7;
+}
+.recievedMSG div:nth-child(2) b {
+  color: white;
+}
+.recievedMSG div:nth-child(3) span {
+  color: white;
+}
+.recievedMSG div:nth-child(3) svg {
+  mix-blend-mode: difference;
+}
+.chatIconCC {
+  width: 40px;
+  height: 40px;
+  background-attachment: cover;
+  background-size: cover;
+  border-radius: 100px;
+  position: absolute;
+  left: -30px;
+  top: 90%;
+  transform: translateY(-50%);
+  border: 1px solid var(--secondary);
+  box-shadow: 0px 5px 30px #c155ff8f;
+}
+
+.dataTimeCC {
+  width: 100%;
+  justify-content: flex-end;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.dataTimeCC span {
+  color: #b3b3b3;
+  font-size: 13px;
+}
+.messageCC b {
+  color: var(--secondary);
+}
+
+.meMSG {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-content: flex-end;
+  align-items: flex-end;
+  border: 1px solid var(--secondary);
+  padding: 10px;
+  border-radius: 20px 20px 0px 20px;
+  box-shadow: 10px 20px 40px #d9d9d9;
+  color: var(--primary);
+  margin-left: 30px;
+  align-self: flex-end;
+  width: fit-content;
+}
+.meMSG .chatIconCC {
+  display: none;
+}
+.meMSG .messageCC {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-end;
+}
+.meMSG .messageCC b{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+.inputCC {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  top: 92%;
+  height: 50px;
+  transform: translateY(-50%);
+}
+.inputIconsCC,
+.inputIconsCC2 {
+  display: flex;
+  width: 20%;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.inputIconsCC2 {
+  width: 10%;
+  justify-content: flex-start;
+}
+
+.inputIconsCC svg,
+.inputIconsCC2 svg {
+  background-color: var(--secondary);
+  color: white;
+  padding: 10px;
+  border-radius: 100px;
+  box-shadow: 0px 5px 30px #c155ffaf;
+  width: 25px;
+  height: 25px;
+}
+.inputBoxCC {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.inputBoxCC form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+.inputBoxCC form input {
+  width: 80%;
+  border: none;
+  border-radius: 100px;
+  padding: 0px 20px;
+  font-size: 15px;
+  box-shadow: 10px 20px 40px #d9d9d9;
+  border: 1px solid var(--secondary);
+  height: 50px;
+}
+.inputBoxCC form input:focus {
+  outline: none;
+}
+.inputBoxCC form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 27px;
+  background-color: var(--secondary);
+  color: white;
+  padding: 10px;
+  border-radius: 100px;
+  box-shadow: 0px 5px 30px #c155ffaf;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
 }
