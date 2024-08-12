@@ -84,7 +84,7 @@ export const GlobalContextProvider = ({ children }) => {
     },
     {
       name: "Granny",
-      thumbnail: "../public/abuelita.jpg",
+      thumbnail: "/abuelita.jpg",
       lastConnection: "2024-07-29T02:39:56.410Z",
       id: 1,
       messages: [
@@ -99,7 +99,7 @@ export const GlobalContextProvider = ({ children }) => {
     },
     {
       name: "Ven a mi abuelita guy",
-      thumbnail: "../public/venami.jpg",
+      thumbnail: "/venami.jpg",
       lastConnection: "2024-07-29T02:39:56.410Z",
       id: 2,
       messages: [
