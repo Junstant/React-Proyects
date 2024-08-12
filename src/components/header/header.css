@@ -16,23 +16,15 @@
 .menu li {
   list-style: none;
 }
-.header h1 {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  line-height: 0px;
-  margin: 0px;
-}
-.header h1 .icon{
-  font-size: 3rem;
-  fill:var(--secondary);
+
+.header .icon{
+  width: 120px;
 }
 
 /* media queries */
 @media screen and (max-width: 700px) {
   .header {
-    padding: 0px;
+    padding: 0px 20px;
   }
 }
 @media screen and (max-width: 450px) {

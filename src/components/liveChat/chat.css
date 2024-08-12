@@ -24,7 +24,7 @@
   height: 60px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: all 200ms ease-in;
-  color: var(--primary);
+  color: var(--secondary);
   background: white;
   animation: buttonSpark 4s;
   animation-delay: 2s;
@@ -34,8 +34,8 @@
 .bubble:hover {
   transform: scale(1.1);
   cursor: pointer;
-  border: 1px solid var(--primary);
-  color: var(--primary);
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
 }
 
 .icon {

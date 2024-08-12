@@ -9,7 +9,7 @@ const Header = () => {
     const {actualUser, logOut} = useGlobalContext();
     return (
         <header className="header">
-        <Link to={"/"}><h1><Palette className="icon"></Palette>Palettio</h1></Link>
+        <Link to={"/"}><img src="../../../public/rsc.svg" className="icon"></img></Link>
         <menu className="menu">
             <li><Link to={"/"}>Palettes</Link></li>
             {actualUser.isAdmin ? <li><Link to="/admin">Create</Link></li> : null}
