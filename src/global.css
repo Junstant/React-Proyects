@@ -26,6 +26,7 @@ a:hover {
   --secondary: #c155ff;
   --gap-small: 10px;
   --gap-large: 20px;
+  --gap-huge: 40px;
   --border-color: #e0e0e0;
 }
 
@@ -75,4 +76,12 @@ a:hover {
   border-radius: 50px;
   background: #ffffff;
   box-shadow: 20px 20px 60px #00000048, -20px -20px 60px #ffffff1c;
+}
+.conStyleThree {
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #00000015, -20px -20px 60px #ffffff1c;
+}
+.widOne{
+  width: clamp(300px, 65%, 100%);
 }

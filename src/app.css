@@ -1,0 +1,14 @@
+.containerApp{
+    width: calc(100% - 40px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: var(--gap-huge);
+    margin: 0px 2px;
+}
+
+.leftContainer, .rightContainer{
+    width: 15%;
+    height: fit-content;
+    padding: 20px;
+}

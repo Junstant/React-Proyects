@@ -22,38 +22,32 @@ const ColorsPalette = (props) => {
   const { handleLike, timeTransform } = useGlobalContext();
 
   return (
-    <section className="palette">
-      {/* Map the array */}
-      {array.map((actualColor, i) => (
-        <div className="fatherCon" key={actualColor + i}>
-          {/* Map the palette */}
-          <div className="colorPalette">
-            {actualColor.color.map((hex, i) => (
-              <div
-                className="colorCon"
-                onClick={() => copyToClipboard(hex)}
-                style={{ backgroundColor: hex }}
-                key={hex + i}
-              >
-                <span className="colorTitle" onClick={() => copyToClipboard(hex)}>
-                  {hex}
-                </span>
-              </div>
-            ))}
+      <section className="palette">
+        {/* Map the array */}
+        {array.map((actualColor, i) => (
+          <div className="fatherCon" key={actualColor + i}>
+            {/* Map the palette */}
+            <div className="colorPalette">
+              {actualColor.color.map((hex, i) => (
+                <div className="colorCon" onClick={() => copyToClipboard(hex)} style={{ backgroundColor: hex }} key={hex + i}>
+                  <span className="colorTitle" onClick={() => copyToClipboard(hex)}>
+                    {hex}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="info">
+              <span className="likes" onClick={() => handleLike(i)}>
+                <Heart /> {actualColor.likes} likes
+              </span>
+              <span className="time">{timeTransform(actualColor.time)} ago</span>
+            </div>
           </div>
-          <div className="info">
-            <span className="likes" onClick={() => handleLike(i)}>
-              <Heart /> {actualColor.likes} likes
-            </span>
-            <span className="time">{timeTransform(actualColor.time)} ago</span>
-          </div>
-        </div>
-      ))}
-      {/* Pop-up */}
-      {popup.visible && <div className="popup">{popup.message}</div>}
-    </section>
+        ))}
+        {/* Pop-up */}
+        {popup.visible && <div className="popup">{popup.message}</div>}
+      </section>
   );
 };
 
 export default ColorsPalette;
-
