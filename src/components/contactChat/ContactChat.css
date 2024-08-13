@@ -11,10 +11,6 @@
 .childCC {
   width: clamp(600px, 30%, 80%);
   height: 70vh;
-  border-radius: 40px;
-  border-radius: 50px;
-  background: #ffffff;
-  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
   overflow: hidden;
   position: relative;
 }

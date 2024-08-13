@@ -78,7 +78,7 @@ const loginRegister = () => {
               <input name="checkbox" id="check" type="checkbox" onChange={handleChangeFormValue} />
               <label htmlFor="check">Already have account? </label>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btnGlobalOne">Submit</button>
           </form>
         </div>
       </section>

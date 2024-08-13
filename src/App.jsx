@@ -10,7 +10,7 @@ function App() {
   return (
       <div>
           <Layout>
-            <h1 style={{color:'#727C8F'}}><Sparkle/> Latest!</h1>
+            <h1 style={{color:'#727C8F'}}><Sparkle/> Newest palettes</h1>
             <ColorsPalette colors={colorDataBase}/>
           </Layout>
       </div> 

@@ -23,6 +23,8 @@
   align-self: flex-start;
 }
 
+
+/* media query */
 @media screen and (max-width: 1500px) {
   .mainFather {
     width: 90%;

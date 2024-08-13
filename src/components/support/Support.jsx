@@ -8,7 +8,7 @@ const Support = () => {
   const { chatDataBase, timeTransform, stateOfMessage } = useGlobalContext();
   return (
     <section className="fatherSP">
-      <div className="childSP">
+      <div className="childSP conStyleOne">
         <div className="headerSP">
           <ChatCircleDots className="iconSP"></ChatCircleDots> Chats
         </div>

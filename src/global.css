@@ -24,4 +24,55 @@ a:hover {
 :root {
   --primary: #727c8f;
   --secondary: #c155ff;
+  --gap-small: 10px;
+  --gap-large: 20px;
+  --border-color: #e0e0e0;
+}
+
+/* Global button */
+.btnGlobalOne {
+  padding: 15px 40px;
+  border-radius: 20px;
+  border: 1px solid var(--secondary);
+  transition: all 100ms ease-in-out;
+  color: var(--secondary);
+}
+.btnGlobalOne svg {
+  font-size: 20px;
+  color: var(--secondary);
+}
+.btnGlobalOne:hover {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: white;
+  box-shadow: 0px 5px 30px #c155ff8f;
+  cursor: pointer;
+}
+
+/* Global icon */
+.iconStyleOne {
+  font-size: 30px;
+  color: var(--primary);
+  transition: all 200ms ease-in-out;
+}
+.iconStyleTwo {
+  font-size: 20px;
+  color: var(--primary);
+  transition: all 200ms ease-in-out;
+}
+.iconStyleOne:hover, .iconStyleTwo:hover {
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+/* Global container */
+.conStyleOne {
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+}
+.conStyleTwo {
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #00000048, -20px -20px 60px #ffffff1c;
 }

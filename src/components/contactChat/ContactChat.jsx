@@ -51,7 +51,7 @@ const ContactChat = () => {
 
   return (
     <section className="fatherCC">
-      <div className="childCC">
+      <div className="childCC conStyleOne">
         <div className="headerCC">
           <div className="firstRowCC">
             <Link to="/support">
