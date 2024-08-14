@@ -143,6 +143,18 @@ export const GlobalContextProvider = ({ children }) => {
     },
   ]);
 
+  // tags database
+  const tagsDataBase = [
+    { tag: "Pastel", popularity: 10},
+    { tag: "Neon", popularity: 5},
+    { tag: "Dark", popularity: 6},
+    { tag: "Warm", popularity: 4},
+    { tag: "Cold", popularity: 1},
+    { tag: "Bright", popularity: 8},
+    { tag: "Soft", popularity: 7},
+    { tag: "Retro", popularity: 9},
+    { tag: "Vintage", popularity:7},];
+
   //! -----------------  FUNCTIONS -----------------------------------------
 
   //update the actual user and save it in the local storage
@@ -238,6 +250,11 @@ export const GlobalContextProvider = ({ children }) => {
     localStorage.setItem("chat", JSON.stringify(newChatDataBase));
   };
 
+// Function to sort tags by popularity
+const sortTags = (tags) => {
+  return tags.sort((a, b) => b.popularity - a.popularity);
+};
+
   //! -----------------  USE EFFECT -----------------------------------------
   //search for user in the localStrorage when the page is loaded and send it to the actual user and the database
   useEffect(() => {
@@ -275,6 +292,8 @@ export const GlobalContextProvider = ({ children }) => {
         handleSearchContact: handleSearchContact,
         stateOfMessage: stateOfMessage,
         handleChatDataBase: handleChatDataBase,
+        tagsDataBase: tagsDataBase,
+        sortTags: sortTags,
       }}
     >
       {children}

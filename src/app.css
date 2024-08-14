@@ -10,5 +10,75 @@
 .leftContainer, .rightContainer{
     width: 15%;
     height: fit-content;
-    padding: 20px;
+    padding: 10px 0px;
 }
+
+.leftContainer li{
+    list-style: none;
+    padding: 10px 0px 10px 40px;
+    margin: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: var(--gap-small);
+    font-size: 1.5rem;
+    color: var(--primary);
+    transition: all 200ms ease-in-out;
+    width: calc(100% - 60px);
+    border-radius: 20px;
+}
+.leftContainer li:hover, .liActive{
+    color: var(--secondary) !important;
+    cursor: pointer;
+    background-color: rgb(236, 236, 236);
+}
+
+.leftContainer{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.tagsApp{
+    border-top: 1px solid var(--border-color);
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: calc(100% - 40px);
+    gap: var(--gap-small);
+    overflow: hidden;
+}
+
+.tagsApp span{
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    transition: all 200ms ease-in-out;
+    border: 1px solid var(--primary);
+}
+.tagsApp span:hover{
+    background-color: var(--secondary);
+    cursor: pointer;
+    border-color: var(--secondary);
+    box-shadow: 0px 5px 30px #c155ff8f;
+}
+.tagsApp span:hover a{
+    color: white;
+}
+
+/* media queries */
+@media screen and (max-width: 1500px) {
+    .containerApp{
+        flex-direction: column;
+    }
+    .containerApp > div{
+        width: 100%;
+    }	
+    .tagsApp{
+        width: calc(100% - 40px);
+    }	
+  }
+  
