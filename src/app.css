@@ -12,7 +12,7 @@
     height: fit-content;
     padding: 10px 0px;
 }
-
+/* ! ------- Left container ------------------ */
 .leftContainer li{
     list-style: none;
     padding: 10px 0px 10px 40px;
@@ -67,6 +67,46 @@
 }
 .tagsApp span:hover a{
     color: white;
+}
+
+.seeMoreApp{
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.seeMoreApp button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-small);
+    color: var(--primary);
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+}
+.seeMoreApp button:hover{
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+/* ! ------- Right container ------------------ */
+.rightContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--gap-small);
+    color: var(--primary);
+}
+
+.rightContainer h4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-small);
+    font-size: 1.5rem;
 }
 
 /* media queries */

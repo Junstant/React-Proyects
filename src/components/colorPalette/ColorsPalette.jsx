@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./colorsPalette.css";
-import { Heart } from "@phosphor-icons/react";
+import { Heart, Eyes, Plus, BookmarkSimple } from "@phosphor-icons/react";
 import { useGlobalContext } from "../../Context";
 
 const ColorsPalette = (props) => {
@@ -12,7 +12,7 @@ const ColorsPalette = (props) => {
     navigator.clipboard.writeText(hex);
     setPopup({ visible: true, message: `Copied ${hex} to clipboard!` });
 
-    // Hide the popup after 2 seconds
+    // Hide the popup after by removing the class
     setTimeout(() => {
       setPopup({ visible: false, message: "" });
     }, 2000);
@@ -28,6 +28,11 @@ const ColorsPalette = (props) => {
           <div className="fatherCon" key={actualColor + i}>
             {/* Map the palette */}
             <div className="colorPalette">
+                <div className="buttonsPal">
+                  <button><Eyes></Eyes> </button>
+                  <button><Plus></Plus> </button>
+                  <button><BookmarkSimple></BookmarkSimple></button>
+                </div>
               {actualColor.color.map((hex, i) => (
                 <div className="colorCon" onClick={() => copyToClipboard(hex)} style={{ backgroundColor: hex }} key={hex + i}>
                   <span className="colorTitle" onClick={() => copyToClipboard(hex)}>

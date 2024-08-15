@@ -153,7 +153,9 @@ export const GlobalContextProvider = ({ children }) => {
     { tag: "Bright", popularity: 8},
     { tag: "Soft", popularity: 7},
     { tag: "Retro", popularity: 9},
-    { tag: "Vintage", popularity:7},];
+    { tag: "Vintage", popularity:7},
+    { tag: "Modern", popularity: 3},
+  ];
 
   //! -----------------  FUNCTIONS -----------------------------------------
 

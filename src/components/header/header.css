@@ -64,14 +64,13 @@
 }
 
 /* hide both menus there are not visible in desktop */
-.menuMobile, .plegableMenu {
+.menuMobile {
   display: none;
 }
-
-/* List of links in mobile */
-.activePlegable {
+.plegableMenu{
   position: fixed;
   display: flex;
+  visibility: visible;
   justify-content: center;
   list-style: none;
   width: calc(100% - 40px);
@@ -84,9 +83,34 @@
   box-shadow: 20px 20px 60px #00000023, -20px -20px 60px #ffffff1c;
   overflow: hidden;
   z-index: 20;
+  transition: all 200ms ease-in-out;
+  opacity: 0%;
+  height: fit-content;
+  pointer-events: none;
 }
 
-.activePlegable li {
+/* List of links in mobile */
+.activePlegable {
+  position: fixed;
+  display: flex;
+  visibility: visible;
+  justify-content: center;
+  list-style: none;
+  width: calc(100% - 40px);
+  top: 5rem;
+  left: 0;
+  margin: 20px;
+  flex-direction: column;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #00000023, -20px -20px 60px #ffffff1c;
+  overflow: hidden;
+  z-index: 20;
+  opacity: 100%;
+  height: fit-content;
+}
+
+.activePlegable li, .plegableMenu li {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -97,6 +121,7 @@
 }
 .activePlegable a {
   width: 100%;
+  opacity: 100%;
 }
 
 .activePlegable li:hover {
