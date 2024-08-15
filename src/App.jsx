@@ -8,7 +8,7 @@ import "./app.css";
 
 function App() {
   // call the colorDataBase from the context
-  const { colorDataBase, tagsDataBase, sortTags} = useGlobalContext();
+  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard} = useGlobalContext();
 
   const [switches, setSwtich] = useState([
   {
@@ -73,6 +73,17 @@ function App() {
           </div>
           <div className="rightContainer conStyleThree">
             <h4><BookmarkSimple></BookmarkSimple> Saved</h4>
+                <div className="colorSavCon">
+
+                  {temporalSaveDatabase.map((color, index) => (
+                    <div key={index} className="savedColors">
+                      {color.color.map((hex, i) => (
+                      
+                        <div key={i} style={{ backgroundColor: hex }} className="colorSav" onClick={() => copyToClipboard(hex)}><span>{hex}</span></div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
           </div>
         </section>
       </Layout>

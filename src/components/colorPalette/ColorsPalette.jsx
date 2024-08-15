@@ -3,23 +3,12 @@ import "./colorsPalette.css";
 import { Heart, Eyes, Plus, BookmarkSimple } from "@phosphor-icons/react";
 import { useGlobalContext } from "../../Context";
 
+// Component to show the colors palette
 const ColorsPalette = (props) => {
   const array = props.colors;
-  const [popup, setPopup] = useState({ visible: false, message: "" });
-
-  // Function to copy the hex to the clipboard
-  function copyToClipboard(hex) {
-    navigator.clipboard.writeText(hex);
-    setPopup({ visible: true, message: `Copied ${hex} to clipboard!` });
-
-    // Hide the popup after by removing the class
-    setTimeout(() => {
-      setPopup({ visible: false, message: "" });
-    }, 2000);
-  }
 
   // Function to handle the like of the color
-  const { handleLike, timeTransform } = useGlobalContext();
+  const { handleLike, timeTransform, handleSave, popup, copyToClipboard } = useGlobalContext();
 
   return (
       <section className="palette">
@@ -29,8 +18,8 @@ const ColorsPalette = (props) => {
             {/* Map the palette */}
             <div className="colorPalette">
                 <div className="buttonsPal">
-                  <button><Eyes></Eyes> </button>
-                  <button><Plus></Plus> </button>
+                  <button><Eyes></Eyes></button>
+                  <button onClick={() => handleSave(array[i])}><Plus></Plus></button>
                   <button><BookmarkSimple></BookmarkSimple></button>
                 </div>
               {actualColor.color.map((hex, i) => (

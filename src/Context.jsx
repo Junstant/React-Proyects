@@ -257,6 +257,27 @@ const sortTags = (tags) => {
   return tags.sort((a, b) => b.popularity - a.popularity);
 };
 
+//set the temporal save of the colors
+const [temporalSaveDatabase, setTemporalSave] = useState([{ color: ["#17153B", "#2E236C", "#433D8B", "#C8ACD6"] }]);
+
+//Function to grab the 4 colors of a palette and render them in the saved palettes
+const handleSave = (color) => {
+  setTemporalSave([...temporalSaveDatabase, color]);
+}
+
+// Function to copy a color to the clipboard
+const [popup, setPopup] = useState({ visible: false, message: "" });
+
+function copyToClipboard(hex) {
+  navigator.clipboard.writeText(hex);
+  setPopup({ visible: true, message: `Copied ${hex} to clipboard!` });
+
+  // Hide the popup after by removing the class
+  setTimeout(() => {
+    setPopup({ visible: false, message: "" });
+  }, 2000);
+}
+
   //! -----------------  USE EFFECT -----------------------------------------
   //search for user in the localStrorage when the page is loaded and send it to the actual user and the database
   useEffect(() => {
@@ -296,6 +317,10 @@ const sortTags = (tags) => {
         handleChatDataBase: handleChatDataBase,
         tagsDataBase: tagsDataBase,
         sortTags: sortTags,
+        handleSave: handleSave,
+        temporalSaveDatabase: temporalSaveDatabase,
+        copyToClipboard: copyToClipboard,
+        popup: popup,
       }}
     >
       {children}
