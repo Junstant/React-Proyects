@@ -8,42 +8,12 @@ import "./app.css";
 
 function App() {
   // call the colorDataBase from the context
-  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard} = useGlobalContext();
-
-  const [switches, setSwtich] = useState([
-  {
-    name:"New",
-    state: true,
-  },
-  {
-    name:"Popular",
-    state: false,
-  },
-  {
-    name:"Random",
-    state: false,
-  },
-  {
-    name:"Collection",
-    state: false,
-  }]);
-
-  //change the switch
-  function changeSwitch(name){
-    const newSwitches = switches.map(item => {
-      if(item.name === name){
-        document.getElementById(name).classList.add("liActive");
-        return {name: item.name, state: true};
-      }else{
-        document.getElementById(item.name).classList.remove("liActive");
-        return {name: item.name, state: false};
-      }
-    });
-    setSwtich(newSwitches);
-  }
+  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard, changeSwitch} = useGlobalContext();
 
   //give the 12 most popular tags
   const tags = sortTags(tagsDataBase).slice(0, 12);
+
+
 
   return (
     <div>
@@ -69,16 +39,14 @@ function App() {
             <h1 style={{ color: "#727C8F" }}>
               <Sparkle /> Newest palettes
             </h1>
-            <ColorsPalette colors={colorDataBase} />
+            <ColorsPalette colors={colorDataBase}/>
           </div>
           <div className="rightContainer conStyleThree">
             <h4><BookmarkSimple></BookmarkSimple> Saved</h4>
                 <div className="colorSavCon">
-
                   {temporalSaveDatabase.map((color, index) => (
                     <div key={index} className="savedColors">
                       {color.color.map((hex, i) => (
-                      
                         <div key={i} style={{ backgroundColor: hex }} className="colorSav" onClick={() => copyToClipboard(hex)}><span>{hex}</span></div>
                       ))}
                     </div>

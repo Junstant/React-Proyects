@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { Check, Checks } from "@phosphor-icons/react";
+import {popularPaletteFilter, timePaletteFilter, randomPaletteFilter} from "./components/FunctionsHelpers/filters.js";
 
 //create the context
 const GlobalContext = createContext();
@@ -157,6 +158,25 @@ export const GlobalContextProvider = ({ children }) => {
     { tag: "Modern", popularity: 3},
   ];
 
+  //switches database
+  const [switches, setSwtich] = useState([
+    {
+      name:"New",
+      state: true,
+    },
+    {
+      name:"Popular",
+      state: false,
+    },
+    {
+      name:"Random",
+      state: false,
+    },
+    {
+      name:"Collection",
+      state: false,
+    }]);
+
   //! -----------------  FUNCTIONS -----------------------------------------
 
   //update the actual user and save it in the local storage
@@ -278,6 +298,37 @@ function copyToClipboard(hex) {
   }, 2000);
 }
 
+//change the switch
+function changeSwitch(name){
+  const newSwitches = switches.map(item => {
+    if(item.name === name){
+      document.getElementById(name).classList.add("liActive");
+      return {name: item.name, state: true};
+    }else{
+      document.getElementById(item.name).classList.remove("liActive");
+      return {name: item.name, state: false};
+    }
+  });
+  setSwtich(newSwitches);
+
+  //corresponding function to the switch selected
+  switch(name){
+    case "New":
+      timePaletteFilter(colorDataBase);
+      break;
+    case "Popular":
+      popularPaletteFilter(colorDataBase);
+      break;
+    case "Random":
+      randomPaletteFilter(colorDataBase);
+      break;
+    // case "Collection":
+    //   pepe()
+    //   break;
+//   }
+}
+}
+
   //! -----------------  USE EFFECT -----------------------------------------
   //search for user in the localStrorage when the page is loaded and send it to the actual user and the database
   useEffect(() => {
@@ -321,6 +372,8 @@ function copyToClipboard(hex) {
         temporalSaveDatabase: temporalSaveDatabase,
         copyToClipboard: copyToClipboard,
         popup: popup,
+        switches: switches,
+        changeSwitch: changeSwitch,
       }}
     >
       {children}
