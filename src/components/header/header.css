@@ -108,6 +108,7 @@
   z-index: 20;
   opacity: 100%;
   height: fit-content;
+  pointer-events: all;
 }
 
 .activePlegable li, .plegableMenu li {

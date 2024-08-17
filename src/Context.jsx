@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-import { Check, Checks } from "@phosphor-icons/react";
+import { Check, Checks, StarFour, Fire, Clover, Heart, Sparkle } from "@phosphor-icons/react";
 import {popularPaletteFilter, timePaletteFilter, randomPaletteFilter} from "./components/FunctionsHelpers/filters.js";
 
 //create the context
@@ -162,6 +162,12 @@ export const GlobalContextProvider = ({ children }) => {
     { tag: "Retro", popularity: 9},
     { tag: "Vintage", popularity:7},
     { tag: "Modern", popularity: 3},
+    { tag: "Bright", popularity: 2},
+    { tag: "Soft", popularity: 1},
+    { tag: "A", popularity: 5},
+    { tag: "B", popularity: 3},
+    { tag: "C", popularity: 2},
+    { tag: "D", popularity: 1},
   ];
 
   //switches database
@@ -188,6 +194,9 @@ export const GlobalContextProvider = ({ children }) => {
 
   //tags filtered database
   const [tagsFilteredDataBase, setTagsFilteredDataBase] = useState([]);
+
+  //current title of the home page
+  const [currentTitle, setCurrentTitle] = useState('New');
 
   //! -----------------  FUNCTIONS -----------------------------------------
 
@@ -290,11 +299,12 @@ const sortTags = (tags) => {
 };
 
 //set the temporal save of the colors
-const [temporalSaveDatabase, setTemporalSave] = useState([{ color: ["#17153B", "#2E236C", "#433D8B", "#C8ACD6"] }]);
+const [temporalSaveDatabase, setTemporalSave] = useState([]);
 
 //Function to grab the 4 colors of a palette and render them in the saved palettes
 const handleSave = (color) => {
   setTemporalSave([...temporalSaveDatabase, color]);
+  setPopup({ visible: true, message: "Color added to Saved!" });
 }
 
 // Function to copy a color to the clipboard
@@ -303,11 +313,6 @@ const [popup, setPopup] = useState({ visible: false, message: "" });
 function copyToClipboard(hex) {
   navigator.clipboard.writeText(hex);
   setPopup({ visible: true, message: `Copied ${hex} to clipboard!` });
-
-  // Hide the popup after by removing the class
-  setTimeout(() => {
-    setPopup({ visible: false, message: "" });
-  }, 2000);
 }
 
 //change the switch
@@ -324,7 +329,7 @@ function changeSwitch(name){
     }
   });
   setSwtich(newSwitches);
-
+  switchTitle(name);
   //corresponding function to the switch selected
   switch(name){
     case "New":
@@ -341,6 +346,7 @@ function changeSwitch(name){
  //Function to save the palettes in the saved palettes
   function handleSavePallete(color){
     setSavedPalettes([...savedPalettes, color]);
+    setPopup({ visible: true, message: "Palette added to Colecction!" });
   }
 
 // Function to filter the palettes by tags
@@ -358,6 +364,23 @@ function tagPaletteFilter(ColorsDataBase, tag) {
 function emptyTagsFilteredDataBase(){
   setTagsFilteredDataBase([]);
 }
+
+ //switch the title of the home page
+ function switchTitle(caseType) {
+   switch (caseType) {
+     case 'New':
+       return (
+         <><StarFour /> New palettes</>);
+     case 'Popular':
+       return (<><Fire /> Popular palettes</>);
+     case 'Random':
+       return (<><Clover /> Random palettes</>);
+     case 'Collection':
+       return (<><Heart /> Collection palettes</>);
+     default:
+       return (<><Sparkle /> New palettes</>);
+   }
+ }
 
   //! -----------------  USE EFFECT -----------------------------------------
   //search for user in the localStrorage when the page is loaded and send it to the actual user and the database
@@ -379,6 +402,23 @@ function emptyTagsFilteredDataBase(){
       setChatDataBase(JSON.parse(localStorage.getItem("chat")));
     }
   }, []);
+
+  //change the title of the home page when the switches change
+  useEffect(() => {
+    const activeSwitch = switches.find(switchItem => switchItem.state === true);
+    if (activeSwitch) {
+      setCurrentTitle(activeSwitch.name);
+    }
+  }, [switches]);
+
+  //use effect to remove the popup after 2 seconds
+useEffect(() => {
+  if (popup.visible) {
+    setTimeout(() => {
+      setPopup({ visible: false, message: "" });
+    }, 2000);
+  }
+}, [popup]);
 
   return (
     <GlobalContext.Provider
@@ -409,6 +449,8 @@ function emptyTagsFilteredDataBase(){
         savedPalettes: savedPalettes,
         tagPaletteFilter: tagPaletteFilter,
         tagsFilteredDataBase: tagsFilteredDataBase,
+        currentTitle: currentTitle,
+        switchTitle: switchTitle,
       }}
     >
       {children}

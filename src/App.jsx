@@ -8,11 +8,18 @@ import "./app.css";
 
 function App() {
   // call the colorDataBase from the context
-  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard, changeSwitch, switches, savedPalettes, tagPaletteFilter, tagsFilteredDataBase} = useGlobalContext();
+  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard, changeSwitch, switches, savedPalettes, tagPaletteFilter, tagsFilteredDataBase, currentTitle, switchTitle} = useGlobalContext();
 
-
+  //define the amount of tags to show
+  const [tagsAmount, setTagsAmount] = useState(12);
+  
   //give the 12 most popular tags
-  const tags = sortTags(tagsDataBase).slice(0, 12);
+  let tags = sortTags(tagsDataBase).slice(0, tagsAmount);
+  
+  //show more tags
+  const handleSeeMore = () => {
+    setTagsAmount(prevAmount => prevAmount + 12); // Incrementar tagsAmount en 12
+  };
 
   //show the collection or the colorDataBase?
   function collectionSwitch(){
@@ -22,6 +29,8 @@ function App() {
       return colorDataBase;
     }
   }
+ 
+
   return (
     <div>
       <Layout>
@@ -38,13 +47,13 @@ function App() {
                   </span>
                 ))}
                 <div className="seeMoreApp">
-                  <button><Eye></Eye>See more...</button>
+                  <button onClick={handleSeeMore} ><Eye></Eye>See more...</button>
                 </div>
             </div>
           </div>
           <div className="widOne">
             <h1 style={{ color: "#727C8F" }}>
-              <Sparkle /> Newest palettes
+            {switchTitle(currentTitle)}
             </h1>
             <ColorsPalette colors={tagsFilteredDataBase.length > 0 ? tagsFilteredDataBase : collectionSwitch()}/>
           </div>
