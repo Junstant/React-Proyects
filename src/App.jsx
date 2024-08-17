@@ -8,7 +8,8 @@ import "./app.css";
 
 function App() {
   // call the colorDataBase from the context
-  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard, changeSwitch, switches, savedPalettes} = useGlobalContext();
+  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard, changeSwitch, switches, savedPalettes, tagPaletteFilter, tagsFilteredDataBase} = useGlobalContext();
+
 
   //give the 12 most popular tags
   const tags = sortTags(tagsDataBase).slice(0, 12);
@@ -33,7 +34,7 @@ function App() {
             <div className="tagsApp">
               {tags.map((tag, index) => (
                   <span key={index}>
-                    <a href="#">{tag.tag}</a>
+                    <p onClick={() => tagPaletteFilter(colorDataBase, tag)}>{tag.tag}</p>
                   </span>
                 ))}
                 <div className="seeMoreApp">
@@ -45,7 +46,7 @@ function App() {
             <h1 style={{ color: "#727C8F" }}>
               <Sparkle /> Newest palettes
             </h1>
-            <ColorsPalette colors={collectionSwitch()}/>
+            <ColorsPalette colors={tagsFilteredDataBase.length > 0 ? tagsFilteredDataBase : collectionSwitch()}/>
           </div>
           <div className="rightContainer conStyleThree">
             <h4><BookmarkSimple></BookmarkSimple> Saved</h4>

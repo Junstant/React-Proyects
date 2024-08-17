@@ -23,5 +23,4 @@ function randomPaletteFilter(palette) {
     return palette;
 }
 
-
-export { popularPaletteFilter, timePaletteFilter, randomPaletteFilter };
+export { popularPaletteFilter, timePaletteFilter, randomPaletteFilter};

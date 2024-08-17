@@ -58,6 +58,7 @@
     font-size: 1.2rem;
     transition: all 200ms ease-in-out;
     border: 1px solid var(--primary);
+    color: var(--primary);
 }
 .tagsApp span:hover{
     background-color: var(--secondary);
@@ -65,7 +66,10 @@
     border-color: var(--secondary);
     box-shadow: 0px 5px 30px #c155ff8f;
 }
-.tagsApp span:hover a{
+.tagsApp span p{
+    transition: all 200ms ease-in-out;
+}
+.tagsApp span:hover p{
     color: white;
 }
 
