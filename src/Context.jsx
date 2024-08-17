@@ -1,6 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { Check, Checks, StarFour, Fire, Clover, Heart, Sparkle } from "@phosphor-icons/react";
 import {popularPaletteFilter, timePaletteFilter, randomPaletteFilter} from "./components/FunctionsHelpers/filters.js";
+import hexaData from "./data/colordatabase.js";
+import chatData from "./data/chatData.js";
+import tagsData from "./data/tagsData.js";
 
 //create the context
 const GlobalContext = createContext();
@@ -26,149 +29,13 @@ export const GlobalContextProvider = ({ children }) => {
     },
   ]);
   // database of colors
-  const [colorDataBase, setColorDataBase] = useState([
-    {
-      color: ["#17153B", "#2E236C", "#433D8B", "#C8ACD6"],
-      likes: "594",
-      time: "2024-03-05T02:39:56.410Z",
-      tags: ["Pastel", "Neon", "Dark", "Warm"],
-    },
-    {
-      color: ["#96B6C5", "#ADC4CE", "#EEE0C9", "#F1F0E8"],
-      likes: "20252",
-      time: "2024-01-02T02:39:56.410Z",
-      tags: ["Cold", "Bright", "Soft", "Retro"],
-    },
-    {
-      color: ["#FFEECC", "#FFDDCC", "#FFCCCC", "#FEBBCC"],
-      likes: "16250",
-      time: "2022-07-23T02:39:56.410Z",
-      tags: ["Vintage", "Modern", "Warm", "Soft"],
-    },
-    {
-      color: ["#B5C0D0", "#CCD3CA", "#F5E8DD", "#EED3D9"],
-      likes: "11302",
-      time: "2019-04-29T02:39:56.410Z",
-      tags: ["Cold", "Bright", "Soft", "Retro"],
-    },
-    {
-      color: ["#F1EAFF", "#E5D4FF", "#DCBFFF", "#D0A2F7"],
-      likes: "9080",
-      time: "2012-10-29T02:39:56.410Z",
-      tags: ["Vintage", "Modern", "Warm", "Soft"],
-    },
-    {
-      color: ["#FFD6BA", "#FFAAA6", "#FF8C94", "#FF6A8A"],
-      likes: "6250",
-      time: "2011-08-22T02:39:56.410Z",
-      tags: ["Cold", "Bright", "Soft", "Retro"],
-    },
-  ]);
+  const [colorDataBase, setColorDataBase] = useState(hexaData);
 
   //chat database
-  const [chatDataBase, setChatDataBase] = useState([
-    {
-      name: "Messi",
-      thumbnail: "https://fcb-abj-pre.s3.amazonaws.com/img/jugadors/MESSI.jpg",
-      lastConnection: "2024-03-01T02:39:56.410Z",
-      id: 0,
-      messages: [
-        {
-          author: "Messi",
-          text: "Can you return to me the facha maestro?",
-          time: "2024-03-05T02:39:56.410Z",
-          id: 1,
-          state: "read",
-        },
-        {
-          author: "Me",
-          text: "I will return it to you if you return to Barcelona",
-          time: "2024-03-05T02:39:56.410Z",
-          id: 2,
-          state: "read",
-        },
-      ],
-    },
-    {
-      name: "Granny",
-      thumbnail: "/abuelita.jpg",
-      lastConnection: "2024-07-29T02:39:56.410Z",
-      id: 1,
-      messages: [
-        {
-          author: "Granny",
-          text: 'Do not open the door to the "ven a mi abuelita" guyssssssssssss',
-          time: "2024-07-29T02:39:56.410Z",
-          id: 1,
-          state: "unread",
-        },
-      ],
-    },
-    {
-      name: "Ven a mi abuelita guy",
-      thumbnail: "/venami.jpg",
-      lastConnection: "2024-07-29T02:39:56.410Z",
-      id: 2,
-      messages: [
-        {
-          author: "Ven a mi abuelita guy",
-          text: "Open the door granny, I have a surprise for you 🥵🍆",
-          time: "2024-07-29T02:39:56.410Z",
-          id: 1,
-          state: "read",
-        },
-        {
-          author: "Me",
-          text: "Wrong chat, im the grandson",
-          time: "2024-07-29T02:39:56.410Z",
-          id: 2,
-          state: "sent",
-        },
-      ],
-    },
-    {
-      name: "Moto moto",
-      thumbnail: "https://i1.sndcdn.com/artworks-rhpmUzVPgtR2OHPS-0NncKA-t500x500.jpg",
-      lastConnection: "2024-07-29T02:39:56.410Z",
-      id: 3,
-      messages: [
-        {
-          author: "Moto moto",
-          text: "I like them big, I like them chunky - Palabras de GitHub Copilot",
-          time: "2024-07-29T02:39:56.410Z",
-          id: 1,
-          state: "read",
-        },
-        {
-          author: "Me",
-          text: "I like them round, I like them plumpy",
-          time: "2024-07-29T02:39:56.410Z",
-          id: 2,
-          state: "delivered",
-        },
-      ],
-    },
-  ]);
+  const [chatDataBase, setChatDataBase] = useState(chatData);
 
   // tags database
-  const tagsDataBase = [
-    { tag: "Pastel", popularity: 10},
-    { tag: "Neon", popularity: 5},
-    { tag: "Dark", popularity: 6},
-    { tag: "Warm", popularity: 4},
-    { tag: "Cold", popularity: 1},
-    { tag: "Bright", popularity: 8},
-    { tag: "Soft", popularity: 7},
-    { tag: "Retro", popularity: 9},
-    { tag: "Vintage", popularity:7},
-    { tag: "Modern", popularity: 3},
-    { tag: "Bright", popularity: 2},
-    { tag: "Soft", popularity: 1},
-    { tag: "A", popularity: 5},
-    { tag: "B", popularity: 3},
-    { tag: "C", popularity: 2},
-    { tag: "D", popularity: 1},
-  ];
+  const tagsDataBase = tagsData;
 
   //switches database
   const [switches, setSwtich] = useState([
