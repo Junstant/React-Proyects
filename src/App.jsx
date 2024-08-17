@@ -8,13 +8,19 @@ import "./app.css";
 
 function App() {
   // call the colorDataBase from the context
-  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard, changeSwitch} = useGlobalContext();
+  const { colorDataBase, tagsDataBase, sortTags, temporalSaveDatabase, copyToClipboard, changeSwitch, switches, savedPalettes} = useGlobalContext();
 
   //give the 12 most popular tags
   const tags = sortTags(tagsDataBase).slice(0, 12);
 
-
-
+  //show the collection or the colorDataBase?
+  function collectionSwitch(){
+    if(switches[3].state === true){
+      return savedPalettes;
+    } else {
+      return colorDataBase;
+    }
+  }
   return (
     <div>
       <Layout>
@@ -39,7 +45,7 @@ function App() {
             <h1 style={{ color: "#727C8F" }}>
               <Sparkle /> Newest palettes
             </h1>
-            <ColorsPalette colors={colorDataBase}/>
+            <ColorsPalette colors={collectionSwitch()}/>
           </div>
           <div className="rightContainer conStyleThree">
             <h4><BookmarkSimple></BookmarkSimple> Saved</h4>

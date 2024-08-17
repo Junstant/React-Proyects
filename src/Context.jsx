@@ -177,6 +177,9 @@ export const GlobalContextProvider = ({ children }) => {
       state: false,
     }]);
 
+  //saved palettes database
+  const [savedPalettes, setSavedPalettes] = useState([]);
+
   //! -----------------  FUNCTIONS -----------------------------------------
 
   //update the actual user and save it in the local storage
@@ -322,12 +325,12 @@ function changeSwitch(name){
     case "Random":
       randomPaletteFilter(colorDataBase);
       break;
-    // case "Collection":
-    //   pepe()
-    //   break;
-//   }
 }
 }
+ //Function to save the palettes in the saved palettes
+  function handleSavePallete(color){
+    setSavedPalettes([...savedPalettes, color]);
+  }
 
   //! -----------------  USE EFFECT -----------------------------------------
   //search for user in the localStrorage when the page is loaded and send it to the actual user and the database
@@ -374,6 +377,9 @@ function changeSwitch(name){
         popup: popup,
         switches: switches,
         changeSwitch: changeSwitch,
+        setSavedPalettes: setSavedPalettes,
+        handleSavePallete: handleSavePallete,
+        savedPalettes: savedPalettes,
       }}
     >
       {children}

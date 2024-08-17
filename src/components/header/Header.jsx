@@ -24,7 +24,6 @@ const Header = () => {
         });
     }, []);
 
-
     return (
         <header className="header">
         <Link to={"/"}><img src="/rsc.svg" className="icon"></img></Link>

@@ -8,7 +8,7 @@ const ColorsPalette = (props) => {
   const array = props.colors;
 
   // Function to handle the like of the color
-  const { handleLike, timeTransform, handleSave, popup, copyToClipboard } = useGlobalContext();
+  const { handleLike, timeTransform, handleSave, popup, copyToClipboard, handleSavePallete } = useGlobalContext();
 
   return (
       <section className="palette">
@@ -20,7 +20,7 @@ const ColorsPalette = (props) => {
                 <div className="buttonsPal">
                   <button><Eyes></Eyes></button>
                   <button onClick={() => handleSave(array[i])}><Plus></Plus></button>
-                  <button><BookmarkSimple></BookmarkSimple></button>
+                  <button onClick={() => handleSavePallete(array[i])}><BookmarkSimple></BookmarkSimple></button>
                 </div>
               {actualColor.color.map((hex, i) => (
                 <div className="colorCon" onClick={() => copyToClipboard(hex)} style={{ backgroundColor: hex }} key={hex + i}>
