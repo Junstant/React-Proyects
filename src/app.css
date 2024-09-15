@@ -59,6 +59,7 @@
     transition: all 200ms ease-in-out;
     border: 1px solid var(--primary);
     color: var(--primary);
+    line-height: 0px;
 }
 .tagsApp span:hover{
     background-color: var(--secondary);
